@@ -1,24 +1,24 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Markdown from '../../components/Markdown.astro';
-import { init } from 'yj-test-ld-blob';
-const rewrite = async () => {
-    const clientSideId = import.meta.env.CLIENT_SIDE_ID
-    console.log(`CLIENT_SIDE_ID: ${clientSideId}`);
-    const client = init(clientSideId);
-    await client.waitForInitialization()
-    const context = {
-        kind: 'random-user',
-        key: 'random-user-key',
-        name: 'Joe'
-    };
-    const val = await client.variation('test-blob', context, false);
-    const path = val ? '/launchdarkly/test1' : '/launchdarkly/test2';
-    console.log(`Path: ${path}`);
-    return path
-};
+// import { init } from 'yj-test-ld-blob';
+// const rewrite = async () => {
+//     const clientSideId = import.meta.env.CLIENT_SIDE_ID
+//     console.log(`CLIENT_SIDE_ID: ${clientSideId}`);
+//     const client = init(clientSideId);
+//     await client.waitForInitialization()
+//     const context = {
+//         kind: 'random-user',
+//         key: 'random-user-key',
+//         name: 'Joe'
+//     };
+//     const val = await client.variation('test-blob', context, false);
+//     const path = val ? '/launchdarkly/test1' : '/launchdarkly/test2';
+//     console.log(`Path: ${path}`);
+//     return path
+// };
 
-const v = await rewrite();
+// const v = await rewrite();
 
 const explainer = `
 # You've reached the fallback page.
@@ -29,5 +29,5 @@ This page is using LaunchDarkly SDK and Netlify blobs
 
 <Layout title="Fallback">
     <Markdown content={explainer} />
-    <p>{v}</p>
+    <!-- <p>{v}</p> -->
 </Layout>
